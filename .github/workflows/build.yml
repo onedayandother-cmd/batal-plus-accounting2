@@ -23,7 +23,8 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install
+        # تم إضافة --legacy-peer-deps لحل مشكلة تعارض نسخ React مع Lucide-React
+        run: npm install --legacy-peer-deps
 
       - name: Build Electron App
         run: npm run electron:build
