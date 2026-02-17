@@ -1,0 +1,10 @@
+{
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "name": "البطل بلس",
+  "description": "نظام محاسبي ولوجستي متكامل لتجارة التجميل والجملة",
+  "desktopSupport": true
+}
