@@ -22,14 +22,18 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Install Dependencies
-        # تم إضافة --legacy-peer-deps لحل مشكلة تعارض نسخ React مع Lucide-React
-        run: npm install --legacy-peer-deps
+      - name: Install Missing Dependencies
+        # هذا السطر يحل مشكلة نقص مكتبة الذكاء الاصطناعي وتعارض النسخ
+        run: |
+          npm install @google/genai lucide-react --legacy-peer-deps
+          npm install --legacy-peer-deps
 
       - name: Build Electron App
+        # هنا نقوم ببناء ملف الـ EXE
         run: npm run electron:build
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_OPTIONS: "--max_old_space_size=4096"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
